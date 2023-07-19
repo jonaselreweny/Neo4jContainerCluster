@@ -1,0 +1,66 @@
+version: '3.4'
+name: neo4j-cluster
+services:
+  neo4j-server-1:
+    hostname: "neo4j-server-1"
+    build: 
+      context: .
+      dockerfile: Neo4j.dockerfile
+    environment: 
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=neo4j/test1234
+      - NEO4J_server_memory_heap_max__size=1g
+      - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
+      - NEO4J_server_default__listen__address=0.0.0.0
+      - NEO4J_server_default__advertised__address=neo4j-server-1
+  neo4j-server-2:
+    hostname: "neo4j-server-2"
+    build: 
+      context: .
+      dockerfile: Neo4j.dockerfile
+    environment: 
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=neo4j/test1234
+      - NEO4J_server_memory_heap_max__size=1g
+      - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
+      - NEO4J_server_default__listen__address=0.0.0.0
+      - NEO4J_server_default__advertised__address=neo4j-server-2
+  neo4j-server-3:
+    hostname: "neo4j-server-3"
+    build: 
+      context: .
+      dockerfile: Neo4j.dockerfile
+    environment: 
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=neo4j/test1234
+      - NEO4J_server_memory_heap_max__size=1g
+      - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
+      - NEO4J_server_default__listen__address=0.0.0.0
+      - NEO4J_server_default__advertised__address=neo4j-server-3
+  neo4j-server-4:
+    hostname: "neo4j-server-4"
+    build: 
+      context: .
+      dockerfile: Neo4j.dockerfile
+    environment: 
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=neo4j/test1234
+      - NEO4J_server_memory_heap_max__size=1g
+      - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
+      - NEO4J_server_default__listen__address=0.0.0.0
+      - NEO4J_server_default__advertised__address=neo4j-server-4
+  neo4j-server-5:
+    hostname: "neo4j-server-5"
+    build: 
+      context: .
+      dockerfile: Neo4j.dockerfile
+    environment: 
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_AUTH=neo4j/test1234
+      - NEO4J_server_memory_heap_max__size=1g
+      - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
+      - NEO4J_server_default__listen__address=0.0.0.0
+      - NEO4J_server_default__advertised__address=neo4j-server-5
+networks:
+  default:
+    name: neo4jnetwork 
