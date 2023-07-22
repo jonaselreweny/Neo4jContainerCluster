@@ -49,6 +49,8 @@ services:
       - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
       - NEO4J_server_default__listen__address=0.0.0.0
       - NEO4J_server_default__advertised__address=neo4j-server-4
+      - NEO4J_initial_server_mode__constraint=SECONDARY
+      - NEO4J_server_cluster_system__database__mode=SECONDARY
   neo4j-server-5:
     hostname: "neo4j-server-5"
     build: 
@@ -61,6 +63,8 @@ services:
       - NEO4J_dbms_cluster_discovery_endpoints=neo4j-server-1:5000,neo4j-server-2:5000,neo4j-server-3:5000,neo4j-server-4:5000,neo4j-server-5:5000
       - NEO4J_server_default__listen__address=0.0.0.0
       - NEO4J_server_default__advertised__address=neo4j-server-5
+      - NEO4J_initial_server_mode__constraint=SECONDARY
+      - NEO4J_server_cluster_system__database__mode=SECONDARY
 networks:
   default:
     name: neo4jnetwork 
