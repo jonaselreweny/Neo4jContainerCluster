@@ -51,6 +51,9 @@ services:
       - NEO4J_server_default__advertised__address=neo4j-server-4
       - NEO4J_initial_server_mode__constraint=SECONDARY
       - NEO4J_server_cluster_system__database__mode=SECONDARY
+      - NEO4J_PLUGINS=["graph-data-science"]
+      ##- NEO4J_dbms_security_procedures_unrestricted=gds.*
+      ##- NEO4J_dbms_security_procedures_allowlist=gds.*
   neo4j-server-5:
     hostname: "neo4j-server-5"
     build: 
@@ -65,6 +68,9 @@ services:
       - NEO4J_server_default__advertised__address=neo4j-server-5
       - NEO4J_initial_server_mode__constraint=SECONDARY
       - NEO4J_server_cluster_system__database__mode=SECONDARY
+      - NEO4J_PLUGINS=["graph-data-science"]
+      ##- NEO4J_dbms_security_procedures_unrestricted=gds.*
+      ##- NEO4J_dbms_security_procedures_allowlist=gds.*
 networks:
   default:
     name: neo4jnetwork 
